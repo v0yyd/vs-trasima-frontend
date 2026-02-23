@@ -55,7 +55,7 @@ function vehiclePopupHtml(v: VehicleState) {
 }
 
 function vehicleDivIcon(L: any, v: VehicleState) {
-  const size = 34;
+  const size = 40;
   const html = `
     <div class="vehicle-icon" aria-label="Vehicle ${v.id}">
       <img src="/car.svg" alt="" />
