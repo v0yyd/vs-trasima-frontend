@@ -55,12 +55,10 @@ function vehiclePopupHtml(v: VehicleState) {
 }
 
 function vehicleDivIcon(L: any, v: VehicleState) {
-  const size = 28;
+  const size = 34;
   const html = `
-    <div class="vehicle-icon" style="--rot:${v.direction}deg" aria-label="Vehicle ${v.id}">
-      <svg viewBox="0 0 24 24" role="img" focusable="false">
-        <path d="M12 2l6.5 20-6.5-4-6.5 4L12 2z"></path>
-      </svg>
+    <div class="vehicle-icon" aria-label="Vehicle ${v.id}">
+      <img src="/car.svg" alt="" />
     </div>
   `;
 
@@ -204,13 +202,13 @@ export default function VehiclesMap() {
         if (abortController.signal.aborted) return;
         const message = e instanceof Error ? e.message : String(e);
         setError(
-          `Server nicht erreichbar oder Fehler beim Laden. (${message}) — erneuter Versuch in 5 Sekunden.`,
+          `Server nicht erreichbar oder Fehler beim Laden. (${message}) — erneuter Versuch in 1 Sekunde.`,
         );
       }
     }
 
     void refresh();
-    interval = window.setInterval(() => void refresh(), 5000);
+    interval = window.setInterval(() => void refresh(), 1000);
 
     return () => {
       abortController.abort();

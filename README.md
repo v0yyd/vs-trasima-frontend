@@ -33,9 +33,7 @@ The frontend fetches vehicles from `GET /api/trasima/vehicles` and proxies `/api
 TRASIMA_API_BASE=http://localhost:8080 npm run dev
 ```
 
-Implementation: `app/components/VehiclesMap.tsx` (polling every 5s; update/create/remove markers; popup + sidebar details; error message + retry).
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Implementation: `app/components/VehiclesMap.tsx` (polling every 1s; update/create/remove markers; `public/car.svg` icons (rotated by `direction`); popup + sidebar details; error message + retry).
 
 ## Learn More
 
