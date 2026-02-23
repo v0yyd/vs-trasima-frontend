@@ -1,8 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Next.js Frontend that displays live vehicle positions from the Trasima REST server on an OpenStreetMap (Leaflet) map.
 
 ## Getting Started
 
-First, run the development server:
+### 1) Start the backend (REST server)
+
+Run the provided Jetty/Jersey server (default: `http://localhost:8080`, mounted under `/api/*`).
+
+### 2) Start the frontend
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,9 +20,20 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` with your browser to see the map.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Backend URL / Proxy
+
+The frontend fetches vehicles from `GET /api/trasima/vehicles` and proxies `/api/*` to the backend.
+
+- Default backend base: `http://localhost:8080`
+- Override via env var:
+
+```bash
+TRASIMA_API_BASE=http://localhost:8080 npm run dev
+```
+
+Implementation: `app/components/VehiclesMap.tsx` (polling every 5s; update/create/remove markers; popup + sidebar details; error message + retry).
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
